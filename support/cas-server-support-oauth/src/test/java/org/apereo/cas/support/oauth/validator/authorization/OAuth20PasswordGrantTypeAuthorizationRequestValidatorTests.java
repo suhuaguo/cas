@@ -14,6 +14,7 @@ import org.pac4j.core.context.J2EContext;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 
 import static org.junit.Assert.*;
@@ -35,7 +36,7 @@ public class OAuth20PasswordGrantTypeAuthorizationRequestValidatorTests {
         service.setClientSecret("secret");
         service.setServiceId("https://callback.example.org");
 
-        when(serviceManager.getAllServices()).thenReturn(CollectionUtils.wrapList(service));
+        when(serviceManager.getAllServices()).thenReturn((Collection) CollectionUtils.wrapList(service));
         val v =
             new OAuth20PasswordGrantTypeAuthorizationRequestValidator(serviceManager, new WebApplicationServiceFactory(),
                 new RegisteredServiceAccessStrategyAuditableEnforcer());

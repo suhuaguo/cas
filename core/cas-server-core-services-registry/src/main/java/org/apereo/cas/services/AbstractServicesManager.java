@@ -222,7 +222,7 @@ public abstract class AbstractServicesManager implements ServicesManager, Initia
     private void evaluateExpiredServiceDefinitions() {
         this.services.values()
             .stream()
-            .filter(getRegisteredServicesFilteringPredicate().negate())
+            .filter((Predicate<RegisteredService>) getRegisteredServicesFilteringPredicate().negate())
             .filter(Objects::nonNull)
             .forEach(this::processExpiredRegisteredService);
     }

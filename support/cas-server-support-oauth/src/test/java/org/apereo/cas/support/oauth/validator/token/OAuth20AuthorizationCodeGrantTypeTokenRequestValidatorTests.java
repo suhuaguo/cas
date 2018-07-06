@@ -27,6 +27,7 @@ import org.pac4j.core.profile.CommonProfile;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 import static org.junit.Assert.*;
@@ -67,7 +68,7 @@ public class OAuth20AuthorizationCodeGrantTypeTokenRequestValidatorTests {
         this.ticketRegistry = mock(TicketRegistry.class);
         when(ticketRegistry.getTicket(anyString(), any())).thenReturn(oauthCode);
 
-        when(serviceManager.getAllServices()).thenReturn(CollectionUtils.wrapList(registeredService));
+        when(serviceManager.getAllServices()).thenReturn((Collection) CollectionUtils.wrapList(registeredService));
         this.validator = new OAuth20AuthorizationCodeGrantTypeTokenRequestValidator(serviceManager,
             ticketRegistry, new RegisteredServiceAccessStrategyAuditableEnforcer());
     }

@@ -19,6 +19,8 @@ import org.pac4j.core.profile.CommonProfile;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import java.util.Collection;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -43,7 +45,7 @@ public class OAuth20PasswordGrantTypeTokenRequestValidatorTests {
         registeredService.setClientSecret("secret");
         registeredService.setServiceId(service.getId());
 
-        when(serviceManager.getAllServices()).thenReturn(CollectionUtils.wrapList(registeredService));
+        when(serviceManager.getAllServices()).thenReturn((Collection) CollectionUtils.wrapList(registeredService));
 
         this.validator = new OAuth20PasswordGrantTypeTokenRequestValidator(new RegisteredServiceAccessStrategyAuditableEnforcer(),
             serviceManager, new WebApplicationServiceFactory());
