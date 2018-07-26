@@ -18,6 +18,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -83,14 +84,12 @@ public class DefaultCasProtocolAttributeEncoder extends AbstractProtocolAttribut
     private static void sanitizeAndTransformAttributeValues(final Map<String, Object> attributes,
                                                             final RegisteredService registeredService) {
         LOGGER.debug("Sanitizing attribute values in preparation of the final validation response");
-        attributes.entrySet()
-            .stream()
-            .forEach(entry -> {
-                val values = CollectionUtils.toCollection(entry.getValue());
-                values.stream()
-                    .filter(v -> getBinaryAttributeValuePredicate().test(v))
-                    .forEach(v -> attributes.put(entry.getKey(), transformAttributeValueIfNecessary(v)));
-            });
+        attributes.forEach((key, value) -> {
+            Set<Object> values = CollectionUtils.toCollection(value);
+            values.stream()
+                .filter(v -> getBinaryAttributeValuePredicate().test(v))
+                .forEach(v -> attributes.put(key, transformAttributeValueIfNecessary(v)));
+        });
     }
 
     private static Object transformAttributeValueIfNecessary(final Object attributeValue) {
