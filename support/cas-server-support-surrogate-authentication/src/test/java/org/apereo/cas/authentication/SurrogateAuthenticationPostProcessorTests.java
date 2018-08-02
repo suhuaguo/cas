@@ -47,7 +47,7 @@ import static org.mockito.Mockito.*;
     CasCoreHttpConfiguration.class,
     SurrogateAuthenticationConfiguration.class
 })
-@TestPropertySource(locations = {"classpath:/surrogate.properties"})
+@TestPropertySource(properties = {"cas.authn.surrogate.simple.surrogates.casuser=cassurrogate"})
 public class SurrogateAuthenticationPostProcessorTests {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

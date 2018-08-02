@@ -73,7 +73,7 @@ import org.springframework.test.context.junit4.SpringRunner;
     CasCoreAuthenticationServiceSelectionStrategyConfiguration.class,
     SurrogateAuthenticationConfiguration.class
 })
-@TestPropertySource(locations = {"classpath:/surrogate-webflow.properties"})
+@TestPropertySource(properties = {"cas.authn.surrogate.simple.surrogates.casuser=cassurrogate"})
 public abstract class BaseSurrogateInitialAuthenticationActionTests {
     @TestConfiguration
     public static class TestAuthenticationConfiguration implements AuthenticationEventExecutionPlanConfigurer {
