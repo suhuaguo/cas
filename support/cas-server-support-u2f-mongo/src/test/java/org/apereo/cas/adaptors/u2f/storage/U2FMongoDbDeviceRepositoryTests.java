@@ -30,7 +30,7 @@ import org.springframework.test.context.junit4.rules.SpringMethodRule;
 @TestPropertySource(properties = {
     "cas.authn.mfa.u2f.mongo.databaseName=mfa-trusted",
     "cas.authn.mfa.u2f.mongo.host=localhost",
-    "cas.authn.mfa.u2f.mongo.port=8081",
+    "cas.authn.mfa.u2f.mongo.port=27017",
     "cas.authn.mfa.u2f.mongo.dropCollection=true"
     })
 public class U2FMongoDbDeviceRepositoryTests extends AbstractU2FDeviceRepositoryTests {

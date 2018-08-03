@@ -26,7 +26,9 @@ import static org.junit.Assert.*;
     "cas.authn.samlIdp.metadata.mongo.dropCollection=true",
     "cas.authn.samlIdp.metadata.mongo.collection=samlResolver",
     "cas.authn.samlIdp.metadata.mongo.host=localhost",
-    "cas.authn.samlIdp.metadata.mongo.port=8081",
+    "cas.authn.samlIdp.metadata.mongo.port=27017",
+    "cas.authn.samlIdp.mongo.userId=root",
+    "cas.authn.samlIdp.mongo.password=secret",
     "cas.authn.samlIdp.metadata.location=file:/tmp"
     })
 public class MongoDbSamlRegisteredServiceMetadataResolverTests extends BaseMongoDbSamlMetadataTests {
