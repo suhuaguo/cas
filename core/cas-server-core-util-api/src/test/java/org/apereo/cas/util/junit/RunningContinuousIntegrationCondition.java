@@ -1,7 +1,5 @@
 package org.apereo.cas.util.junit;
 
-import lombok.val;
-
 /**
  * This is {@link RunningContinuousIntegrationCondition}.
  *
@@ -11,8 +9,8 @@ import lombok.val;
 public class RunningContinuousIntegrationCondition implements IgnoreCondition {
     @Override
     public Boolean isSatisfied() {
-        val sysProp = System.getProperty("CI", Boolean.FALSE.toString());
-        val envProp = System.getenv("CI");
-        return "true".equals(sysProp) || "true".equals(envProp);
+        return "true".equalsIgnoreCase(System.getenv("TRAVIS"))
+            || "true".equalsIgnoreCase(System.getProperty("CI", Boolean.FALSE.toString()))
+            || "true".equalsIgnoreCase(System.getenv("CI"));
     }
 }
